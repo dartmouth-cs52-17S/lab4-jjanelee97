@@ -20,7 +20,6 @@ const App = (props) => {
     <Router>
       <div>
         <Nav />
-
         <Switch>
           <Route exact path="/" component={Welcome} />
           <Route path="/about" component={About} />
