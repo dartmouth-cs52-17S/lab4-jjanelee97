@@ -13,6 +13,7 @@
         "no-console": 0,
         "no-unused-vars": ["error", { "vars": "all", "args": "none" }],
         "no-underscore-dangle": 0,
+        "no-static-element-interactions": 0,
         "arrow-body-style": 0,
         "one-var": ["error", { "uninitialized": "always", "initialized": "never" }],
         "one-var-declaration-per-line": ["error", "initializations"],
@@ -29,6 +30,7 @@
         "react/prop-types": 0,
         "react/jsx-first-prop-new-line": 0,
         "react/jsx-filename-extension": 0,
+        "jsx-a11y/no-static-element-interactions": 0,
         "import/no-unresolved": [2, { "commonjs": true, "caseSensitive": false}]
     },
     "plugins": [

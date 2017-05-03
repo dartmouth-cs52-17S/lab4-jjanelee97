@@ -36,6 +36,7 @@
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
+    "autoprefixer": "^6.7.7",
     "axios": "^0.16.1",
     "jquery": "^3.2.1",
     "lodash.debounce": "^4.0.8",
