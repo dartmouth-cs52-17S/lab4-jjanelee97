@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { createPost } from '../actions';
 
 class NewPost extends Component {
@@ -45,6 +45,11 @@ class NewPost extends Component {
         <input placeholder="content" onChange={this.onContentChange} value={this.state.content} />
         <input placeholder="cover_url" onChange={this.onCoverURLChange} value={this.state.cover_url} />
         <button onClick={this.handleSubmit}>Submit</button>
+        <Link className="link" to={'/'}>
+          <div>
+            <button>Cancel</button>
+          </div>
+        </Link>
       </div>
     );
   }

@@ -11,12 +11,10 @@ const PostsReducer = (state = initialState, action) => {
       return { all: action.payload };
     case ActionTypes.FETCH_POST:
       return { post: action.payload };
-    case ActionTypes.DELETE_POST:
-      return { post: action.payload };
     case ActionTypes.UPDATE_POST:
       return { post: action.payload };
     default:
-      return 'PostsReducer not working';
+      return state;
   }
 };
 

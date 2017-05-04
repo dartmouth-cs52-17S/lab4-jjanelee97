@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import marked from 'marked';
 import { fetchPost, deletePost, updatePost } from '../actions';
 
 class Post extends Component {
@@ -16,16 +17,23 @@ class Post extends Component {
       content: props.content,
       cover_url: props.cover_url,
     };
-    this.renderSomething = this.renderSomething.bind(this);
+    this.renderPost = this.renderPost.bind(this);
     this.onDelete = this.onDelete.bind(this);
+
     this.onTitleBlur = this.onTitleBlur.bind(this);
     this.onContentBlur = this.onContentBlur.bind(this);
+    this.onTagsBlur = this.onTagsBlur.bind(this);
+    this.onCoverURLBlur = this.onCoverURLBlur.bind(this);
+
     this.onTitleFocus = this.onTitleFocus.bind(this);
     this.onContentFocus = this.onContentFocus.bind(this);
+    this.onTagsFocus = this.onTagsFocus.bind(this);
+    this.onCoverURLFocus = this.onCoverURLFocus.bind(this);
+
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onContentChange = this.onContentChange.bind(this);
-    this.onCoverURLChange = this.onCoverURLChange.bind(this);
     this.onTagsChange = this.onTagsChange.bind(this);
+    this.onCoverURLChange = this.onCoverURLChange.bind(this);
   }
 
   componentDidMount() {
@@ -36,73 +44,83 @@ class Post extends Component {
     this.props.deletePost(this.props.match.params.postID, this.props.history);
   }
 
+  // Blur functions
   onTitleBlur(event) {
+    event.preventDefault();
+
     this.setState({ isTitleEditing: !this.state.isTitleEditing });
     this.props.updatePost(this.props.match.params.postID, this.state);
   }
-
   onContentBlur(event) {
+    event.preventDefault();
+
     this.setState({ isContentEditing: !this.state.isContentEditing });
     this.props.updatePost(this.props.match.params.postID, this.state);
   }
+  onTagsBlur(event) {
+    event.preventDefault();
 
+    this.setState({ isTagsEditing: !this.state.isTagsEditing });
+    this.props.updatePost(this.props.match.params.postID, this.state);
+  }
+  onCoverURLBlur(event) {
+    event.preventDefault();
 
+    this.setState({ isCoverURLEditing: !this.state.isCoverURLEditing });
+    this.props.updatePost(this.props.match.params.postID, this.state);
+  }
+
+  // Focus functions
   onTitleFocus(event) {
-    this.setState({ isTitleEditing: !this.state.isTitleEditing });
+    event.preventDefault();
+    this.setState({ isTitleEditing: !this.state.isTitleEditing, title: this.props.post.title });
   }
-
   onContentFocus(event) {
-    this.setState({ isContentEditing: !this.state.isContentEditing });
+    event.preventDefault();
+    this.setState({ isContentEditing: !this.state.isContentEditing, content: this.props.post.content });
+  }
+  onTagsFocus(event) {
+    event.preventDefault();
+    this.setState({ isTagsEditing: !this.state.isTagsEditing, tags: this.props.post.tags });
+  }
+  onCoverURLFocus(event) {
+    event.preventDefault();
+    this.setState({ isCoverURLEditing: !this.state.isCoverURLEditing, cover_url: this.props.post.cover_url });
   }
 
+  // onChange functions
   onTitleChange(event) {
     this.setState({ title: event.target.value });
   }
-
   onContentChange(event) {
     this.setState({ content: event.target.value });
-  }
-  onCoverURLChange(event) {
-    this.setState({ cover_url: event.target.value });
   }
   onTagsChange(event) {
     this.setState({ tags: event.target.value });
   }
+  onCoverURLChange(event) {
+    this.setState({ cover_url: event.target.value });
+  }
 
 
-  renderSomething() {
+  renderPost() {
     if (this.props.post) {
       return (
-        <div >
+        // ref input code referred to http://stackoverflow.com/questions/28889826/react-set-focus-on-input-after-render
+        <div className="post">
           { this.state.isTitleEditing ?
-            <div>
-              <input onBlur={this.onTitleBlur} onChange={this.onTitleChange} placeholder={this.props.post.title} value={this.state.title} />
-            </div> :
-            <div className="title">
-              <i onClick={this.onTitleFocus}>{this.props.post.title}</i>
-            </div>}
-            { this.state.isContentEditing ?
-              <div>
-                <form onBlur={this.onContentBlur} onChange={this.onContentChange} value={this.state.content} />
-              </div> :
-              <div className="content">
-                <i onClick={this.onContentFocus}>{this.props.post.content}</i>
-              </div>}
-
-              <input onBlur={this.onBlur} onChange={this.onTagsChange} value={this.state.tags} />
-              <input onBlur={this.onBlur} onChange={this.onCoverURLChange} value={this.state.cover_url} />
-            </div>
-            :
-            <div>
-              <div className="coverpic">
-                <i onClick={this.onFocus}>{this.props.post.cover_url}</i>
-              </div>
-              <div className="tags">
-                <i onClick={this.onFocus}>{this.props.post.tags}</i>
-              </div>
-            </div>
-          }
-          <button type="button" onClick={this.onDelete}> Delete </button>
+            <input className="edit" onBlur={this.onTitleBlur} ref={input => input && input.focus()} onChange={this.onTitleChange} value={this.state.title} /> :
+            <div className="title" onClick={this.onTitleFocus} dangerouslySetInnerHTML={{ __html: marked(this.props.post.title || '') }} />}
+          { this.state.isContentEditing ?
+            <input className="edit" onBlur={this.onContentBlur} ref={input => input && input.focus()} onChange={this.onContentChange} value={this.state.content} /> :
+            <div className="content" onClick={this.onContentFocus} dangerouslySetInnerHTML={{ __html: marked(this.props.post.content || '') }} />}
+          { this.state.isTagsEditing ?
+            <input className="edit" onBlur={this.onTagsBlur} ref={input => input && input.focus()} onChange={this.onTagsChange} value={this.state.tags} /> :
+            <div className="tags" onClick={this.onTagsFocus} dangerouslySetInnerHTML={{ __html: marked(this.props.post.tags || '') }} />}
+          { this.state.isCoverURLEditing ?
+            <input className="edit" onBlur={this.onCoverURLBlur} ref={input => input && input.focus()} onChange={this.onCoverURLChange} value={this.state.cover_url} /> :
+            <div className="cover_url" onClick={this.onCoverURLFocus} dangerouslySetInnerHTML={{ __html: marked(this.props.post.cover_url || '') }} />}
+          <button onClick={this.onDelete}> Delete </button>
         </div>
       );
     } else {
@@ -112,7 +130,7 @@ class Post extends Component {
 
   render() {
     return (
-      <div>{ this.renderSomething() }</div>
+      <div>{ this.renderPost() }</div>
     );
   }
 }

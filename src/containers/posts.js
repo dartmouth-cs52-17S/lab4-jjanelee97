@@ -10,7 +10,7 @@ class Posts extends Component {
     this.props.fetchPosts();
   }
 
-  renderSomething() {
+  renderPosts() {
     if (this.props.posts.all) {
       return this.props.posts.all.map((post) => {
         return (
@@ -30,8 +30,11 @@ class Posts extends Component {
 
   render() {
     return (
-      <div>
-        { this.renderSomething() }
+      <div className="main-layout">
+        <h1>Posts</h1>
+        <div className="posts-layout">
+          { this.renderPosts() }
+        </div>
       </div>
     );
   }

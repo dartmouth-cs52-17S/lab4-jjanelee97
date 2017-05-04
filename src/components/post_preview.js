@@ -1,11 +1,13 @@
 import React from 'react';
+import marked from 'marked';
+
 
 const PostsPreview = (props) => {
   return (
-    <div className="postbox">
-      <h1>{props.title}</h1>
-      {props.cover_url}
-      {props.tags}
+    <div className="preview_post">
+      <div className="preview_coverurl" dangerouslySetInnerHTML={{ __html: marked(props.cover_url || '') }} />
+      <div className="preview_title" dangerouslySetInnerHTML={{ __html: marked(props.title || '') }} />
+      <div className="preview_tags">{props.tags}</div>
     </div>
   );
 };
