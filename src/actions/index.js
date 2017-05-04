@@ -33,7 +33,7 @@ export function createPost(post, history) {
 }
 
 export function updatePost(id, post) {
-  const fields = { title: post.title, contents: post.content, tags: post.tags, cover_url: post.cover_url };
+  const fields = { title: post.title, content: post.content, tags: post.tags, cover_url: post.cover_url };
   return (dispatch) => {
     axios.put(`${ROOT_URL}/posts/${id}${API_KEY}`, fields).then((response) => {
       dispatch({ type: 'UPDATE_POST', payload: response.data });

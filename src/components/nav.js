@@ -7,7 +7,6 @@ const Nav = (props) => {
     <nav>
       <NavLink exact to="/">My Super Awesome Blog</NavLink>
       <button><NavLink to="/posts/new">Add</NavLink></button>
-
     </nav>
   );
 };

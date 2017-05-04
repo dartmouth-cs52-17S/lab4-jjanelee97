@@ -47,25 +47,23 @@ class Post extends Component {
   // Blur functions
   onTitleBlur(event) {
     event.preventDefault();
-
     this.setState({ isTitleEditing: !this.state.isTitleEditing });
     this.props.updatePost(this.props.match.params.postID, this.state);
   }
   onContentBlur(event) {
     event.preventDefault();
-
     this.setState({ isContentEditing: !this.state.isContentEditing });
+    console.log(this.state);
+
     this.props.updatePost(this.props.match.params.postID, this.state);
   }
   onTagsBlur(event) {
     event.preventDefault();
-
     this.setState({ isTagsEditing: !this.state.isTagsEditing });
     this.props.updatePost(this.props.match.params.postID, this.state);
   }
   onCoverURLBlur(event) {
     event.preventDefault();
-
     this.setState({ isCoverURLEditing: !this.state.isCoverURLEditing });
     this.props.updatePost(this.props.match.params.postID, this.state);
   }
