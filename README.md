@@ -5,11 +5,11 @@ This is a post blogging web app made with React and Redux.  The Redux store keep
 
 ## What worked and didn't
 
-Mapping Redux state to props was difficult to understand coming from lab 3.  I think getting the posts to fetch and onBlur were the most difficult part.  Deleting was pretty easy to implement beacuse it was a simple axios call, but the editing states for each of the fields in the post had a lot of functions.  If I had more time, I would have liked to find a way to condense the code in Post.js. 
+Mapping Redux state to props was difficult to understand coming from lab 3.  I think getting the posts to fetch and onBlur were the most difficult part.  Deleting was pretty easy to implement beacuse it was a simple axios call, but the editing states for each of the fields in the post had a lot of functions.  If I had more time, I would have liked to find a way to condense the code in Post.js.
 
 ## References
 http://stackoverflow.com/questions/28889826/react-set-focus-on-input-after-render
 
 
 ## Note on Styling
-**Tim said I don't have to do styling for this lab!!!**
+**Tim said I don't have to do styling for this lab so sorry for the temporary atrocious style!! It's ugly I know**
