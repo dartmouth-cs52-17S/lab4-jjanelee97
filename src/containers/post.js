@@ -53,8 +53,6 @@ class Post extends Component {
   onContentBlur(event) {
     event.preventDefault();
     this.setState({ isContentEditing: !this.state.isContentEditing });
-    console.log(this.state);
-
     this.props.updatePost(this.props.match.params.postID, this.state);
   }
   onTagsBlur(event) {
