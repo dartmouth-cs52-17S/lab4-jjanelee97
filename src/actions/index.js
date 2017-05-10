@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const ROOT_URL = 'http://localhost:9090/api';
-// const ROOT_URL = 'https://cs52-blog.herokuapp.com/api';
+const ROOT_URL = 'https://janeblog.herokuapp.com/api';
 const API_KEY = '?key=jane_lee';
 
 
@@ -18,7 +17,7 @@ export function fetchPosts() {
     axios.get(`${ROOT_URL}/posts${API_KEY}`).then((response) => {
       dispatch({ type: 'FETCH_POSTS', payload: response.data });
     }).catch((error) => {
-      console.error('fetchPosts did not work');
+      console.error(`fetchPosts did not work ${error}`);
     });
   };
 }
@@ -28,7 +27,7 @@ export function createPost(post, history) {
     axios.post(`${ROOT_URL}/posts${API_KEY}`, post).then((response) => {
       history.push('/');
     }).catch((error) => {
-      console.error('createPost did not work');
+      console.error(`createPost did not work ${error}`);
     });
   };
 }
