@@ -115,7 +115,7 @@ class Post extends Component {
             <div className="tags" onClick={this.onTagsFocus} dangerouslySetInnerHTML={{ __html: marked(this.props.post.tags || '') }} />}
           { this.state.isCoverURLEditing ?
             <input className="edit" onBlur={this.onCoverURLBlur} ref={input => input && input.focus()} onChange={this.onCoverURLChange} value={this.state.cover_url} /> :
-            <div className="cover_url" onClick={this.onCoverURLFocus} dangerouslySetInnerHTML={{ __html: marked(this.props.post.cover_url || '') }} />}
+            <img alt="" className="cover_url" onClick={this.onCoverURLFocus} src={this.props.post.cover_url} />}
           <button onClick={this.onDelete}> Delete </button>
         </div>
       );
