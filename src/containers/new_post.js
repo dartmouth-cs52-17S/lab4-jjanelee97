@@ -40,10 +40,11 @@ class NewPost extends Component {
   render() {
     return (
       <div>
-        <input placeholder="title" onChange={this.onTitleChange} value={this.state.title} />
-        <input placeholder="tags" onChange={this.onTagsChange} value={this.state.tags} />
-        <input placeholder="content" onChange={this.onContentChange} value={this.state.content} />
-        <input placeholder="cover_url" onChange={this.onCoverURLChange} value={this.state.cover_url} />
+        <h1>Create a New Post</h1>
+        <input className="newInput" placeholder="title" onChange={this.onTitleChange} value={this.state.title} />
+        <input className="newInput" placeholder="tags" onChange={this.onTagsChange} value={this.state.tags} />
+        <input className="newInput" placeholder="content" onChange={this.onContentChange} value={this.state.content} />
+        <input className="newInput" placeholder="cover_url" onChange={this.onCoverURLChange} value={this.state.cover_url} />
         <button onClick={this.handleSubmit}>Submit</button>
         <Link className="link" to={'/'}>
           <div>

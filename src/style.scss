@@ -1,21 +1,25 @@
-
-
 body {
   font-family: "Roboto", sans-serif;
-  background: darken(white, 7);
+  background: darken(white, 13);
   color: black;
 }
-.main-layout {
-  h1  {
-    margin-left: 40px;
-  }
+
+h1  {
+  margin-left: 40px;
+  margin-bottom: 5px;
+}
+
+Textarea  {
+  padding: 10px;
+  margin: 10px;
+  align-self: center;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(255, 145, 0, 1);
+  background-color: rgba(255, 255, 255, 1);
   height: 50px;
   margin: 10px;
   padding-left: 20px;
@@ -27,12 +31,15 @@ nav {
     text-decoration: none;
   }
 }
-
 .posts-layout {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  flex-direction: row;
+  align-content: flex-start;
+}
+
+.newInput {
+  border-radius: 5px;
+  padding: 4px;
 }
 
 .post {
@@ -41,13 +48,29 @@ nav {
   align-items: center;
 }
 
-.cover_url, .title, .tags, .content {
+.cover_url  {
+  width: 70%;
+  height: 350px;
+  margin: 10px;
+}
+
+.post-text  {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 65%;
+  background-color: white;
+
+  input {
+    align-self: center;
+  }
+}
+
+.title, .tags, .content {
   display: flex;
   justify-content: center;
   padding: 10px;
-  border: solid;
-  border-color: black;
-  width: 50%;
+  margin: 20px;
 }
 
 .posts-layout  {
@@ -55,20 +78,28 @@ nav {
   justify-content: center;
   .link  {
     text-decoration: none !important;
-    color: rgb(156, 97, 215);
+    color: rgb(97, 123, 215);
   }
   .link:hover {
     color: rgb(24, 134, 58);
   }
 }
 
-
 .preview_post {
-  border: 2px solid;
+  background-color: rgb(255, 255, 255);
   width: 280px;
   margin: 10px;
-  min-height: 280px;
 }
+
+.preview_title  {
+  font-size: 24px;
+  padding-left: 10px;
+}
+.preview_tags {
+  padding-left: 10px;
+  padding-bottom: 20px;
+}
+
 img {
   width: 280px;
   align-self: center;
@@ -76,7 +107,6 @@ img {
 }
 
 input {
-  display: flex;
   width: 100vh;
   height: 23px;
   margin: 30px;
@@ -96,7 +126,7 @@ input {
 
 button  {
   margin-left: 30px;
-  padding: 6px;
+  padding: 8px;
   background-color: rgb(46, 173, 139);
   border: solid;
   border-radius: 3px;

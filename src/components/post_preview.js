@@ -6,6 +6,7 @@ const PostsPreview = (props) => {
   return (
     <div className="preview_post">
       <img alt="" className="preview_coverurl" src={props.cover_url} />
+      <p>{props.username}</p>
       <div className="preview_title" dangerouslySetInnerHTML={{ __html: marked(props.title || '') }} />
       <div className="preview_tags">{props.tags}</div>
     </div>
