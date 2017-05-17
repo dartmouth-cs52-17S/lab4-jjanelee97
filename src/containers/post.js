@@ -109,7 +109,7 @@ class Post extends Component {
             <input className="edit" onBlur={this.onCoverURLBlur} ref={input => input && input.focus()} onChange={this.onCoverURLChange} value={this.state.cover_url} /> :
             <img alt="" className="cover_url" onClick={this.onCoverURLFocus} src={this.props.post.cover_url} />}
           <div className="post-text">
-            <div><p>{this.props.post.username}</p></div>
+            <p className="username">Posted by: {this.props.post.username}</p>
             { this.state.isTitleEditing ?
               <input className="edit" onBlur={this.onTitleBlur} ref={input => input && input.focus()} onChange={this.onTitleChange} value={this.state.title} /> :
               <div className="title" onClick={this.onTitleFocus} dangerouslySetInnerHTML={{ __html: marked(this.props.post.title || '') }} />}

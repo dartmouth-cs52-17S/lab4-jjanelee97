@@ -9,7 +9,3 @@ Mapping Redux state to props was difficult to understand coming from lab 3.  I t
 
 ## References
 http://stackoverflow.com/questions/28889826/react-set-focus-on-input-after-render
-
-
-## Note on Styling
-**Tim said I don't have to do styling for this lab so sorry for the temporary atrocious style!! It's ugly I know**

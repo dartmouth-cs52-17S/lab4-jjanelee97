@@ -58,19 +58,32 @@ nav {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  min-width: 65%;
+  width: 65%;
   background-color: white;
-
   input {
     align-self: center;
   }
+}
+
+.username {
+  padding-left: 30px;
 }
 
 .title, .tags, .content {
   display: flex;
   justify-content: center;
   padding: 10px;
-  margin: 20px;
+  border: 3px solid;
+  border-color: rgb(125, 173, 173);
+  border-radius: 5px;
+  margin: 5px;
+  p {
+    max-width: 65%;
+  }
+}
+
+.title  {
+  font-size: 40px;
 }
 
 .posts-layout  {
